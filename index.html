@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101116">
+  <title>Groq Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <div class="brand-icon">✦</div>
+        <span>Groq Chat</span>
+      </div>
+
+      <button class="new-chat-btn" id="newChat">
+        <span>＋</span> New chat
+      </button>
+    </div>
+
+    <div class="sidebar-label">YOUR CHAT</div>
+
+    <div class="chat-list" id="chatList"></div>
+
+    <div class="sidebar-bottom">
+      <button class="settings-button" id="openSettings">
+        <span>⚙</span>
+        Settings
+      </button>
+      <div class="sidebar-footer">
+        Powered by Groq
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CHAT -->
+  <main class="main">
+
+    <header class="topbar">
+      <button class="mobile-menu" id="menuButton">☰</button>
+
+      <div class="model-label">
+        <span class="status-dot"></span>
+        <span id="modelDisplay">Groq AI</span>
+      </div>
+
+      <button class="top-settings" id="topSettings">⚙</button>
+    </header>
+
+    <section class="chat-area" id="chatArea">
+      <div class="welcome" id="welcome">
+        <div class="welcome-icon">✦</div>
+        <h1>What can I help with?</h1>
+        <p>Ask anything. Let's figure it out together.</p>
+
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="Explain something interesting about space.">
+            <span>✧</span>
+            Something interesting
+          </button>
+
+          <button class="suggestion" data-prompt="Help me write a simple JavaScript project.">
+            <span>⌘</span>
+            Help me code
+          </button>
+
+          <button class="suggestion" data-prompt="Teach me something new today.">
+            <span>◈</span>
+            Teach me something
+          </button>
+
+          <button class="suggestion" data-prompt="Help me brainstorm creative project ideas.">
+            <span>✎</span>
+            Brainstorm ideas
+          </button>
+        </div>
+      </div>
+
+      <div class="messages" id="messages"></div>
+    </section>
+
+    <!-- INPUT -->
+    <footer class="input-area">
+      <div class="input-container">
+
+        <textarea
+          id="messageInput"
+          placeholder="Message Groq AI..."
+          rows="1"
+          enterkeyhint="send"
+        ></textarea>
+
+        <button id="sendButton" class="send-button" title="Send message">
+          ↑
+        </button>
+      </div>
+
+      <div class="input-caption">
+        Groq AI can make mistakes. Check important information.
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="settingsOverlay">
+  <div class="modal">
+
+    <div class="modal-header">
+      <h2>Settings</h2>
+      <button id="closeSettings" class="close-button">✕</button>
+    </div>
+
+    <div class="setting-group">
+      <label for="apiKey">Groq API Key</label>
+      <input
+        type="password"
+        id="apiKey"
+        placeholder="Enter your Groq API key"
+        autocomplete="off"
+      >
+      <small>Your key is stored locally in this browser.</small>
+      <a href="https://console.groq.com/keys" target="_blank" rel="noopener">
+        Get an API key ↗
+      </a>
+    </div>
+
+    <div class="setting-group">
+      <label for="model">Model ID</label>
+      <input
+        type="text"
+        id="model"
+        value="openai/gpt-oss-120b"
+        spellcheck="false"
+        autocomplete="off"
+      >
+      <small>Enter any supported Groq model ID.</small>
+    </div>
+
+    <div class="setting-group">
+      <label class="toggle-label">
+        <input type="checkbox" id="rememberKey">
+        Remember API key on this device
+      </label>
+    </div>
+
+    <div class="modal-footer">
+      <button id="saveSettings" class="save-button">Save settings</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
